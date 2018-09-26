@@ -1,0 +1,43 @@
+<%= form_with(model: @user, local: true, class: "form-horizontal") do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> que no permite(n) guardar el usuario:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="form-group">
+      <%= form.label :name, "Nombre", class: "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= form.text_field :name, id: :user_name, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email, "Email", class: "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= form.text_field :email, id: :user_email, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password, "Password", class: "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= form.password_field :password, id: :user_password, class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= form.submit "Grabar Usuario", class: "btn btn-primary" %>
+        <%= link_to 'Volver al Home', root_path, class: "btn btn-default"  %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
